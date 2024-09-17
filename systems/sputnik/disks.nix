@@ -99,13 +99,10 @@
     unitConfig.DefaultDependencies = "no";
     serviceConfig.Type = "oneshot";
     wantedBy = [ "initrd.target" ];
-    requires = [ "dev-disk-by\\x2did-nvme\\x2dWD_BLACK_SN850X_2000GB_23376A441301.device"];
-    after = [ "dev-disk-by\\x2did-nvme\\x2dWD_BLACK_SN850X_2000GB_23376A441301.device" ];
+    after = [ "initrd-root-device.target" ];
     before = [ "sysroot.mount" ];
 
     script = ''
-      echo "Starting rollback service..."
-
       vgchange -ay pool
       mkdir -p /btrfs_tmp
       mount /dev/pool/root /btrfs_tmp
