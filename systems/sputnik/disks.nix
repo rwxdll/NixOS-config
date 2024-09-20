@@ -94,6 +94,8 @@
     };
   };
 
+  boot.initrd.services.lvm.enable = true;
+
   boot.initrd.systemd.services.rollback = {
     description = "Rollback BTRFS root subvolume to a pristine state";
     unitConfig.DefaultDependencies = "no";
